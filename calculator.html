@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <style>
+    /* CSS styles go here */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+	h1
+	{text-align: center;
+	}
+    
+    .container {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f7f7f7;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .calculator {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+      margin-top: 10px;
+    }
+    
+    input[type="button"] {
+      padding: 10px;
+      font-size: 18px;
+      text-align: center;
+      border: none;
+      background-color: #e0e0e0;
+      cursor: pointer;
+    }
+    
+    #display {
+      grid-column: 1 / span 4;
+      padding: 20px;
+      font-size: 30px;
+      text-align: right;
+      background-color: #fff;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body bgcolor='hotpink'>
+  <div class="container">
+    <h1><font color="red"> Calculator </font></h1>
+    <div id="display"></div>
+    <div class="calculator">
+      <input type="button" value="7" onclick="appendNumber('7')">
+      <input type="button" value="8" onclick="appendNumber('8')">
+      <input type="button" value="9" onclick="appendNumber('9')">
+      <input type="button" value="/" onclick="appendOperator('/')">
+      <input type="button" value="4" onclick="appendNumber('4')">
+      <input type="button" value="5" onclick="appendNumber('5')">
+      <input type="button" value="6" onclick="appendNumber('6')">
+      <input type="button" value="*" onclick="appendOperator('*')">
+      <input type="button" value="1" onclick="appendNumber('1')">
+      <input type="button" value="2" onclick="appendNumber('2')">
+      <input type="button" value="3" onclick="appendNumber('3')">
+      <input type="button" value="-" onclick="appendOperator('-')">
+      <input type="button" value="0" onclick="appendNumber('0')">
+      <input type="button" value="." onclick="appendDecimal('.')">
+      <input type="button" value="=" onclick="calculate()">
+      <input type="button" value="+" onclick="appendOperator('+')">
+    </div>
+  </div>
+  
+  <script>
+    // JavaScript code goes here
+    function appendNumber(number) {
+      document.getElementById("display").innerHTML += number;
+    }
+    
+    function appendOperator(operator) {
+      document.getElementById("display").innerHTML += operator;
+    }
+    
+    function appendDecimal(decimal) {
+      document.getElementById("display").innerHTML += decimal;
+    }
+    
+    function calculate() {
+      const expression = document.getElementById("display").innerHTML;
+      const result = eval(expression);
+      document.getElementById("display").innerHTML = result;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<html>
+<head>
+  <title>Currency Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color:#F5FCFF;"
+      border: 1px solid #ccc;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    input[type="number"] {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    
+    select {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    
+    .result {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+	body {
+  	background-image: url('https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX6941487.jpg');
+	background-size: 100% 100%;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 style="color:RED;">Currency Converter</h1>
+    <div class="form-group">
+      <label for="amount">Amount:</label>
+      <input type="number" id="amount" placeholder="Enter amount" />
+    </div>
+    <div class="form-group">
+      <label for="from">From:</label>
+      <select id="from">
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+        <option value="INR">INR</option>
+	<option value="VND">VND</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="to">To:</label>
+      <select id="to">
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+        <option value="INR">INR</option>
+	<option value="VND">VND</option>
+      </select>
+    </div>
+    <button onclick="convertCurrency()">Convert</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function convertCurrency() {
+      var amount = document.getElementById("amount").value;
+      var from = document.getElementById("from").value;
+      var to = document.getElementById("to").value;
+      
+      var conversionRate = getConversionRate(from, to);
+      var result = amount * conversionRate;
+      
+      document.getElementById("result").innerHTML = result.toFixed(6) + " " + to;
+    }
+    
+    function getConversionRate(from, to) {
+      // 1 USD = 0.85 EUR, 1 USD = 0.72 GBP, 1 USD =23,485 VND, 1 USD = 82.74 INR
+      if (from === "USD" && to === "EUR") {
+        return 0.85;
+      } else if (from === "USD" && to === "GBP") {
+        return 0.72;
+      } else if (from === "USD" && to === "INR") {
+        return 82.74;
+      } else if (from === "USD" && to === "VND") {
+	    return 23485;
+      } else if (from === "EUR" && to === "USD") {
+        return 1.18;
+      } else if (from === "EUR" && to === "VND") {
+        return 25201.75;
+      } else if (from === "EUR" && to === "GBP") {
+        return 0.85;
+      } else if (from === "EUR" && to === "INR") {
+        return 89.12;
+      } else if (from === "GBP" && to === "USD") {
+        return 1.39;
+      } else if (from === "GBP" && to === "VND") {
+        return 29403;
+      } else if (from === "GBP" && to === "EUR") {
+        return 1.17;
+      } else if (from === "GBP" && to === "INR") {
+        return 102.66;
+      } else if (from === "INR" && to === "USD") {
+        return 0.012;
+      } else if (from === "INR" && to === "VND") {
+        return 285.13;
+      } else if (from === "INR" && to === "EUR") {
+        return 0.011;
+      } else if (from === "INR" && to === "GBP") {
+        return 0.0097;
+      }else if (from === "VND" && to === "USD") {
+        return 0.000043;
+      } else if (from === "VND" && to === "EUR") {
+        return 0.000040;
+      } else if (from === "VND" && to === "GBP") {
+        return 0.000034;
+      } else if (from === "VND" && to === "INR") {
+        return 0.0035;
+      } else {
+        return 1; // Default rate (same currency)
+      }
+    }
+  </script>
+</body>
+</html>
